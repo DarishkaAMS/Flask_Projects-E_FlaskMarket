@@ -10,4 +10,4 @@ def home_page_view():
 
 @app.route('/market')
 def market_page_view():
-    return render_template('market.html')
+    return render_template('market.html', item_name='Phone')
