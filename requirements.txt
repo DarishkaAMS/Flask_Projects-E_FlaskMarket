@@ -50,7 +50,9 @@ feedfinder2==0.0.4
 feedparser==6.0.2
 filelock==3.0.12
 Flask==1.1.2
+Flask-SQLAlchemy==2.5.1
 folium==0.11.0
+greenlet==1.0.0
 idna==2.10
 ipykernel==5.3.4
 ipython==7.18.1
@@ -159,6 +161,7 @@ six==1.15.0
 social-auth-app-django==4.0.0
 social-auth-core==3.3.3
 soupsieve==2.0.1
+SQLAlchemy==1.4.3
 sqlparse==0.2.4
 stripe==2.27.0
 terminado==0.9.1
