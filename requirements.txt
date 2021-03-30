@@ -43,7 +43,9 @@ djangorestframework-camel-case==1.2.0
 djangorestframework-jwt==1.11.0
 djangorestframework-simplejwt==4.4.0
 djoser==2.1.0
+dnspython==2.1.0
 docopt==0.6.2
+email-validator==1.1.2
 entrypoints==0.3
 fake-useragent==0.1.11
 feedfinder2==0.0.4

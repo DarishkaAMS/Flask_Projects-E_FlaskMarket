@@ -20,6 +20,7 @@ def market_page_view():
 @app.route('/register', methods=['GET', 'POST'])
 def register_page_view():
     form = RegisterForm()
+
     if form.validate_on_submit():
         user_to_create = User(username=form.username.data,
                               email_address=form.email_address.data,
@@ -27,4 +28,9 @@ def register_page_view():
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('market_page_view'))
+
+    if form.errors != {}:
+        for err_msg in form.errors.values():
+            print(f'There was an error with creating a user: {err_msg}')
+
     return render_template('register.html', form=form)
