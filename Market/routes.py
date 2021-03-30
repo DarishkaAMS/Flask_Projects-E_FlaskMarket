@@ -1,7 +1,7 @@
 from flask import render_template
 
 from Market import app
-from Market.forms import RegisterForm
+# from Market.forms import RegisterForm
 from Market.models import Item
 
 
