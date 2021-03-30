@@ -38,8 +38,15 @@
             </ul>
           </div>
       </nav>
-    {% block content %}
-    {% endblock %}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {% block content %}
+      {% endblock %}
   </body>
 
     <!-- Optional JavaScript; choose one of the two! -->
