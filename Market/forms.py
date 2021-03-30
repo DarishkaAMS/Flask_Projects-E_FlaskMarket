@@ -10,7 +10,12 @@ class RegisterForm(FlaskForm):
     def validate_username(self, username_to_check):
         user = User.query.filter_by(username=username_to_check).first()
         if user:
-            raise ValidationError('This username is already booked! Please try a different one')
+            raise ValidationError('This username is already booked. Please try a different one')
+
+    def validate_email_address(self, email_address_to_check):
+        email_address = User.query.filter_by(email_address=email_address_to_check).first()
+        if email_address:
+            raise ValidationError('Hmmm... I have already seen this e-mail address. Please try some other one')
 
     username = StringField(label='User Name:', validators=[Length(min=2, max=30), DataRequired()])
     email_address = StringField(label='Email Address:', validators=[Email(), DataRequired()])
