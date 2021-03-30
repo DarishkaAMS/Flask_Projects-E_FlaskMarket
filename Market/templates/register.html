@@ -5,19 +5,24 @@ Register Page
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <form method="POST" class="form-register"style="color:white"> 
-      {{ form.username.label() }}
-      {{ form.username(class="form-control", placeholder="What is your name?") }}
-      
-      {{ form.email_address.label() }}
-      {{ form.email_address(class="form-control", placeholder="Hmmm... Let's stay in touch?") }}
-      
-      {{ form.password_1.label() }}
-      {{ form.password_1(class="form-control", placeholder="How about a secret word?") }}
-      
-      {{ form.password_2.label() }}
-      {{ form.password_2(class="form-control", placeholder="And again") }}
-    </form>
-  </div>
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-register" style="color:white">
+            <img class="mb-4" src="https://ctl.s6img.com/society6/img/2DZ5pCs1LDlhj5rV7ITQmVdkYxU/w_700/posters/top/~artwork,fw_2718,fh_3618,fx_-450,iw_3618,ih_3618/s6-0089/a/34685025_16296864/~~/black-cat-dcv-posters.jpg" alt="DarishkaAMS">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Create your Account
+            </h1>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="What is your name?") }}
+
+            {{ form.email_address.label() }}
+            {{ form.email_address(class="form-control", placeholder="Hmmm... Let's stay in touch?") }}
+
+            {{ form.password_1.label() }}
+            {{ form.password_1(class="form-control", placeholder="How about a secret word?") }}
+
+            {{ form.password_2.label() }}
+            {{ form.password_2(class="form-control", placeholder="And again") }}
+        </form>
+    </div>
 {% endblock %}
