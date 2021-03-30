@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import redirect, render_template, url_for
 
 from Market import app, db
 from Market.forms import RegisterForm
@@ -17,13 +17,14 @@ def market_page_view():
     return render_template('market.html', items=items)
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register_page_view():
     form = RegisterForm()
     if form.validate_on_submit():
         user_to_create = User(username=form.username.data,
                               email_address=form.email_address.data,
-                              password=form.password_1.data)
+                              password_hash=form.password_1.data)
         db.session.add(user_to_create)
         db.session.commit()
+        return redirect(url_for('market_page_view'))
     return render_template('register.html', form=form)
