@@ -34,3 +34,8 @@ def register_page_view():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
     return render_template('register.html', form=form)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login_page_view():
+    return render_template('login.html')

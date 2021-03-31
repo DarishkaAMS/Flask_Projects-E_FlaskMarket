@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+<div class="text-center">
+    <img class="mb-4" src="{{url_for('static', filename='black-cat-dcv-posters.jpg')}}" alt="DarishkaAMS" width="350" height="350">
     <h2> Welcome to Market Page </h2>
     <table class="table table-hover table-dark">
         <thead>
@@ -33,4 +35,5 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 {% endblock %}
