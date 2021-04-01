@@ -46,7 +46,7 @@ def login_page_view():
                 attempted_password=form.password.data
         ):
             login_user(attempted_user)
-            flash('Welcome!', category='success')
+            flash('Welcome Back!', category='success')
             return redirect(url_for('market_page_view'))
         else:
             flash('Sorry... But username and password are not match! Please try again', category='danger')
