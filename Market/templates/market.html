@@ -3,6 +3,7 @@
 Market Page
 {% endblock %}
 {% block content %}
+
 <div class="text-center">
    <img class="mb-4" src="{{url_for('static', filename='black-cat-dcv-posters.jpg')}}" alt="DarishkaAMS" width="350" height="350">
    <h2 class="bg-dark"> Welcome to Market Page </h2>
@@ -24,14 +25,15 @@ Market Page
          </thead>
          <tbody>
             {% for item in items %}
+            {% include 'includes/items_modals.html' %}
             <tr>
                <td> {{ item.id }} </td>
                <td> {{ item.name }} </td>
                <td> {{ item.barcode }} </td>
                <td> {{ item.price }} $ </td>
                <td>
-                  <button class="btn btn-outline btn-info"> More Into </button>
-                  <button class="btn btn-outline btn-success"> Purchase </button>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}"> More Into </button>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}"> Purchase </button>
                </td>
             </tr>
             {% endfor %}
