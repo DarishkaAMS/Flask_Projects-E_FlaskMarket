@@ -20,10 +20,14 @@ def market_page_view():
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(name=purchased_item).first()
         if p_item_object:
-            p_item_object.owner = current_user.id
-            current_user.budget -= p_item_object.price
-            db.session.commit()
-            flash(f"Congratulations! You've purchased {p_item_object.name} for {p_item_object.price}")
+            if current_user.can_purchase(p_item_object):
+                p_item_object.buy(current_user)
+                flash(f"Congratulations! You've purchased {p_item_object.name} "
+                      f"for {p_item_object.price} $", category='success')
+            else:
+                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}", category='danger')
+
+        return redirect(url_for('market_page_view'))
 
     if request.method == "GET":
         items = Item.query.filter_by(owner=None)
@@ -60,7 +64,7 @@ def login_page_view():
                 attempted_password=form.password.data
         ):
             login_user(attempted_user)
-            flash('Welcome Back!', category='success')
+            flash(f'Welcome Back, {attempted_user.username} !', category='success')
             return redirect(url_for('market_page_view'))
         else:
             flash('Sorry... But username and password are not match! Please try again', category='danger')
