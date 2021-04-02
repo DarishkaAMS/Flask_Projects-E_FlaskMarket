@@ -23,9 +23,11 @@ def market_page_view():
             p_item_object.owner = current_user.id
             current_user.budget -= p_item_object.price
             db.session.commit()
-    items = Item.query.filter_by(owner=None)
+            flash(f"Congratulations! You've purchased {p_item_object.name} for {p_item_object.price}")
 
-    return render_template('market.html', items=items, purchase_form=purchase_form)
+    if request.method == "GET":
+        items = Item.query.filter_by(owner=None)
+        return render_template('market.html', items=items, purchase_form=purchase_form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
