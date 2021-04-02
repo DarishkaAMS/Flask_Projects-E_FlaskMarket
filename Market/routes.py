@@ -1,5 +1,5 @@
 from flask import flash, redirect, render_template, url_for
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 from Market import app, db
 from Market.forms import LoginForm, RegisterForm
@@ -52,3 +52,10 @@ def login_page_view():
             flash('Sorry... But username and password are not match! Please try again', category='danger')
 
     return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+def logout_page_view():
+    logout_user()
+    flash('Bye now! Come back again!', category='info')
+    return redirect(url_for('home_page_view'))
