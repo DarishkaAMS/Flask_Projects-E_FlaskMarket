@@ -2,7 +2,7 @@ from flask import flash, redirect, render_template, url_for
 from flask_login import login_required, login_user, logout_user
 
 from Market import app, db
-from Market.forms import LoginForm, RegisterForm
+from Market.forms import LoginForm, PurchaseItemForm, RegisterForm, SellItemForm
 from Market.models import Item, User
 
 
@@ -15,8 +15,9 @@ def home_page_view():
 @app.route('/market')
 @login_required
 def market_page_view():
+    purchase_form = PurchaseItemForm()
     items = Item.query.all()
-    return render_template('market.html', items=items)
+    return render_template('market.html', items=items, purchase_form=purchase_form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
