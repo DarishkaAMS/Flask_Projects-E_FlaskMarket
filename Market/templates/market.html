@@ -1,39 +1,47 @@
 {% extends 'base.html' %}
-
 {% block title %}
-    Market Page
+Market Page
 {% endblock %}
-
 {% block content %}
 <div class="text-center">
-    <img class="mb-4" src="{{url_for('static', filename='black-cat-dcv-posters.jpg')}}" alt="DarishkaAMS" width="350" height="350">
-    <h2> Welcome to Market Page </h2>
-    <table class="table table-hover table-dark">
-        <thead>
+   <img class="mb-4" src="{{url_for('static', filename='black-cat-dcv-posters.jpg')}}" alt="DarishkaAMS" width="350" height="350">
+   <h2 class="bg-dark"> Welcome to Market Page </h2>
+</div>
+<div class="row" style="margin-top:20px; margin-left:20px">
+   <div class="col-8">
+       <h3> Available Items </h3>
+       <p> Click on one of the items to start buying </p>
+       <br>
+      <table class="table table-hover table-dark">
+         <thead>
             <tr>
-                <!-- Your Columns HERE -->
-                <th scope="col"> ID </th>
-                <th scope="col"> Name </th>
-                <th scope="col"> Barcode </th>
-                <th scope="col"> Price </th>
-                <th scope="col"> Options </th>
+               <th scope="col"> ID </th>
+               <th scope="col"> Name </th>
+               <th scope="col"> Barcode </th>
+               <th scope="col"> Price </th>
+               <th scope="col"> Options </th>
             </tr>
-        </thead>
-        <tbody>
-            <!-- Your rows inside the table HERE: -->
+         </thead>
+         <tbody>
             {% for item in items %}
-                <tr>
-                    <td> {{ item.id }} </td>
-                    <td> {{ item.name }} </td>
-                    <td> {{ item.barcode }} </td>
-                    <td> {{ item.price }} $ </td>
-                    <td>
-                        <button class="btn btn-outline btn-info"> More Into </button>
-                        <button class="btn btn-outline btn-success"> Purchase this item </button>
-                    </td>
-                </tr>
+            <tr>
+               <td> {{ item.id }} </td>
+               <td> {{ item.name }} </td>
+               <td> {{ item.barcode }} </td>
+               <td> {{ item.price }} $ </td>
+               <td>
+                  <button class="btn btn-outline btn-info"> More Into </button>
+                  <button class="btn btn-outline btn-success"> Purchase </button>
+               </td>
+            </tr>
             {% endfor %}
-        </tbody>
-    </table>
+         </tbody>
+      </table>
+   </div>
+   <div class="col-4">
+       <h3> Owned Items </h3>
+       <p> Click on one of the items to put it back on the FlaskMakert </p>
+       <br>
+   </div>
 </div>
 {% endblock %}
