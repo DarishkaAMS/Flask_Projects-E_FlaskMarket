@@ -29,6 +29,8 @@ def register_page_view():
                               password=form.password_1.data)
         db.session.add(user_to_create)
         db.session.commit()
+        login_user(user_to_create)
+        flash(f"Account created successfully! You are logged in as {user_to_create.username}", category='success')
         return redirect(url_for('market_page_view'))
 
     if form.errors != {}:
